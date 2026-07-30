@@ -10,6 +10,7 @@ using TransferManagerCore.UI;
 using HarmonyLib;
 using System.Diagnostics.Eventing.Reader;
 using ColossalFramework;
+using TransferManagerExtended.Util;
 
 namespace TransferManagerCore
 {
@@ -29,6 +30,8 @@ namespace TransferManagerCore
         private GameObject? m_modManagerGameObject = null;
         private GameObject? m_keyboardShortcutGameObject = null;
         private UITextureAtlas? m_atlas = null;
+
+        public static bool IsIndustriesMeetsSunsetHarborRunning;
 
         // ----------------------------------------------------------------------------------------
         public static TransferManagerExtendedMod Instance
@@ -55,15 +58,6 @@ namespace TransferManagerCore
             }
         }
 
-        public override string Version
-        {
-            get
-            {
-                Version version = Assembly.GetExecutingAssembly().GetName().Version;
-                return $"v{version.Major}.{version.Minor}.{version.Build}";
-            }
-        }
-
 		public override string Description
 		{
 			get { return "More realistic response to service requests."; }
@@ -77,6 +71,7 @@ namespace TransferManagerCore
 
             // Add our patch call to pre load level function just in case TransferManager.Awake has already been called
             Singleton<LoadingManager>.instance.m_levelPreLoaded += OnPreLoadLevel;
+            AtlasUtils.CreateAtlas();
         }
 
         public void OnPreLoadLevel()
@@ -168,6 +163,9 @@ namespace TransferManagerCore
 
             // Generate path distance cache if needed
             PathDistanceCache.UpdateCache();
+
+            IsIndustriesMeetsSunsetHarborRunning = DependencyUtils.IsIndustriesMeetsSunsetHarborRunning();
+
         }
 
         public override void OnLevelUnloading()

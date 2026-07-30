@@ -15,6 +15,55 @@ namespace TransferManagerCore
         private static Dictionary<int, CustomTransferReason.Reason> s_frameReasonList = new Dictionary<int, CustomTransferReason.Reason>()
         {
 #if TRANSFER_MANAGER_EXTENDED
+            // Industries Meets SunsetHarbor Mod
+            { 0, CustomTransferReason.Reason.MealsDeliveryLow },
+            { 2, CustomTransferReason.Reason.MealsDeliveryMedium },
+            { 4, CustomTransferReason.Reason.MealsDeliveryHigh }, // deliver high end food - vehicle
+            { 6, CustomTransferReason.Reason.Anchovy },
+            { 8, CustomTransferReason.Reason.Salmon },
+            { 10, CustomTransferReason.Reason.Shellfish },
+            { 12, CustomTransferReason.Reason.Tuna },
+            { 14, CustomTransferReason.Reason.Algae },
+            { 16, CustomTransferReason.Reason.Seaweed },
+            { 18, CustomTransferReason.Reason.Mussels },
+            { 20, CustomTransferReason.Reason.Trout },
+            { 22, CustomTransferReason.Reason.Milk },
+            { 24, CustomTransferReason.Reason.RawHides },
+            { 26, CustomTransferReason.Reason.Pork },
+            { 28, CustomTransferReason.Reason.Fruits },
+            { 30, CustomTransferReason.Reason.Vegetables },
+            { 32, CustomTransferReason.Reason.Wool },
+            { 34, CustomTransferReason.Reason.Cotton },
+            { 36, CustomTransferReason.Reason.Cows },
+            { 38, CustomTransferReason.Reason.HighlandCows },
+            { 40, CustomTransferReason.Reason.Sheep },
+            { 42, CustomTransferReason.Reason.Pigs },
+            { 44, CustomTransferReason.Reason.ProcessedVegetableOil },
+            { 46, CustomTransferReason.Reason.LiquidConcentrates },
+            { 48, CustomTransferReason.Reason.FishMeal },
+            { 50, CustomTransferReason.Reason.FishOil },
+            { 52, CustomTransferReason.Reason.ChemicalProducts },
+            { 54, CustomTransferReason.Reason.Leather },
+            { 56, CustomTransferReason.Reason.FoodProducts },
+            { 58, CustomTransferReason.Reason.BeverageProducts },
+            { 60, CustomTransferReason.Reason.BakedGoods },
+            { 62, CustomTransferReason.Reason.CannedFish },
+            { 64, CustomTransferReason.Reason.Furnitures },
+            { 66, CustomTransferReason.Reason.ElectronicProducts },
+            { 68, CustomTransferReason.Reason.IndustrialSteel },
+            { 70, CustomTransferReason.Reason.Tupperware },
+            { 72, CustomTransferReason.Reason.Toys },
+            { 74, CustomTransferReason.Reason.PrintedProducts },
+            { 76, CustomTransferReason.Reason.TissuePaper },
+            { 78, CustomTransferReason.Reason.Cloths },
+            { 80, CustomTransferReason.Reason.PetroleumProducts },
+            { 82, CustomTransferReason.Reason.Cars },
+            { 84, CustomTransferReason.Reason.Footwear },
+            { 86, CustomTransferReason.Reason.HouseParts },
+            { 88, CustomTransferReason.Reason.Ship },
+            { 90, CustomTransferReason.Reason.MealsLow },
+            { 92, CustomTransferReason.Reason.MealsMedium },
+            { 94, CustomTransferReason.Reason.MealsHigh },
             // Prison Helicopter Mod
             { 100, CustomTransferReason.Reason.PoliceVanCriminalMove },
             { 102, CustomTransferReason.Reason.CriminalPickup2 },
@@ -107,7 +156,7 @@ namespace TransferManagerCore
 
         // ----------------------------------------------------------------------------------------
         // Three underscores ___ in front of variable name allow you to have private members injected.
-        [HarmonyPatch(typeof(TransferManager), "MatchOffers")] 
+        [HarmonyPatch(typeof(TransferManager), "MatchOffers")]
         [HarmonyPrefix]
         public static bool MatchOffersPrefix(TransferReason material,
                                     ref ushort[] ___m_incomingCount,

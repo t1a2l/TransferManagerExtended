@@ -1,10 +1,12 @@
-using ColossalFramework;
+﻿using ColossalFramework;
 using SleepyCommon;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using TransferManagerCore.CustomManager;
 using UnityEngine;
 using static TransferManager;
+using static TransferManagerCore.CustomTransferReason;
 
 namespace TransferManagerCore
 {
@@ -23,7 +25,7 @@ namespace TransferManagerCore
             return (Math.Sqrt(Vector3.SqrMagnitude(offer1.Position - offer2.Position)) * 0.001).ToString("00.000");
         }
 
-        public static string DebugOffer(CustomTransferReason.Reason material, CustomTransferOffer offer, bool bAlign, bool bNode, bool bDistrict)
+        public static string DebugOffer(Reason material, CustomTransferOffer offer, bool bAlign, bool bNode, bool bDistrict)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -308,6 +310,270 @@ namespace TransferManagerCore
             }
 
             return OutsideConnectionDirection.None;
+        }
+
+        public static List<string> GetExtendedTransferReasons()
+        {
+            return
+            [
+                "MealsDeliveryLow",
+                "MealsDeliveryMedium",
+                "MealsDeliveryHigh",
+                "Anchovy",
+                "Salmon",
+                "Shellfish",
+                "Tuna",
+                "Algae",
+                "Seaweed",
+                "Mussels",
+                "Trout",
+                "Milk",
+                "RawHides",
+                "Pork",
+                "Fruits",
+                "Vegetables",
+                "Wool",
+                "Cotton",
+                "Cows",
+                "HighlandCows",
+                "Sheep",
+                "Pigs",
+                "ProcessedVegetableOil",
+                "LiquidConcentrates",
+                "FishMeal",
+                "FishOil",
+                "ChemicalProducts",
+                "Leather",
+                "FoodProducts",
+                "BeverageProducts",
+                "BakedGoods",
+                "CannedFish",
+                "Furnitures",
+                "ElectronicProducts",
+                "IndustrialSteel",
+                "Tupperware",
+                "Toys",
+                "PrintedProducts",
+                "TissuePaper",
+                "Cloths",
+                "PetroleumProducts",
+                "Cars",
+                "Footwear",
+                "HouseParts",
+                "Ship",
+                "ConstructionResources",
+                "OperationResources",
+                "MealsLow",
+                "MealsMedium",
+                "MealsHigh",
+                "PoliceVanCriminalMove",
+                "PrisonHelicopterCriminalPickup",
+                "PrisonHelicopterCriminalMove",
+                "CarRent",
+                "CarBuy",
+                "CarSell",
+                "VehicleFuel",
+                "VehicleFuelElectric",
+                "VehicleWash",
+                "VehicleMinorRepair",
+                "VehicleMajorRepair",
+                "VehicleOutOfFuel",
+                "VehicleBrokenDown"
+            ];
+        }
+
+        public static string GetTransferReasonName(int transferInt)
+        {
+            string s = transferInt switch
+            {
+                150 => "MealsDeliveryLow",
+                151 => "MealsDeliveryMedium",
+                152 => "MealsDeliveryHigh",
+                153 => "Anchovy",
+                154 => "Salmon",
+                155 => "Shellfish",
+                156 => "Tuna",
+                157 => "Algae",
+                158 => "Seaweed",
+                159 => "Mussels",
+                160 => "Trout",
+                161 => "Milk",
+                162 => "RawHides",
+                163 => "Pork",
+                164 => "Fruits",
+                165 => "Vegetables",
+                166 => "Wool",
+                167 => "Cotton",
+                168 => "Cows",
+                169 => "HighlandCows",
+                170 => "Sheep",
+                171 => "Pigs",
+                172 => "ProcessedVegetableOil",
+                173 => "LiquidConcentrates",
+                174 => "FishMeal",
+                175 => "FishOil",
+                176 => "ChemicalProducts",
+                177 => "Leather",
+                178 => "FoodProducts",
+                179 => "BeverageProducts",
+                180 => "BakedGoods",
+                181 => "CannedFish",
+                182 => "Furnitures",
+                183 => "ElectronicProducts",
+                184 => "IndustrialSteel",
+                185 => "Tupperware",
+                186 => "Toys",
+                187 => "PrintedProducts",
+                188 => "TissuePaper",
+                189 => "Cloths",
+                190 => "PetroleumProducts",
+                191 => "Cars",
+                192 => "Footwear",
+                193 => "HouseParts",
+                194 => "Ship",
+                195 => "ConstructionResources",
+                196 => "OperationResources",
+                220 => "MealsLow",
+                221 => "MealsMedium",
+                222 => "MealsHigh",
+                223 => "PoliceVanCriminalMove",
+                224 => "PrisonHelicopterCriminalPickup",
+                225 => "PrisonHelicopterCriminalMove",
+                226 => "CarRent",
+                227 => "CarBuy",
+                228 => "CarSell",
+                229 => "VehicleFuel",
+                230 => "VehicleFuelElectric",
+                231 => "VehicleWash",
+                232 => "VehicleMinorRepair",
+                233 => "VehicleMajorRepair",
+                234 => "VehicleOutOfFuel",
+                235 => "VehicleBrokenDown",
+                _ => ""
+            };
+
+            return s;
+        }
+
+        public static string GetTransferReasonDescription(int transferInt)
+        {
+            string s = transferInt switch
+            {
+                153 => "Anchovy is gathered by Anchovy fish harbor.",
+                154 => "Salmon is gathered by Salmon fish harbor.",
+                155 => "Shellfish is gathered by Shellfish fish harbor.",
+                156 => "Tuna is gathered by Tuna fish harbor.",
+                157 => "Algae is gathered by Algae fish farm.",
+                158 => "Seaweed is gathered by Seaweed fish farm.",
+                159 => "Mussels is gathered by Mussel fish farm.",
+                160 => "Trout is gathered by Trout fish farm.",
+                161 => "Milk is produced by Milking Parlours.",
+                162 => "RawHides are produced by Slaughterhouses to create Leather.",
+                163 => "Pork is produced by Slaughterhouses.",
+                164 => "Fruits are produced by Fruit Fields.",
+                165 => "Vegetables are produced by Potatoes Fields, Corn Fields and Greeenhouses.",
+                166 => "Wool is produced from Sheep in Animal Pastures.",
+                167 => "Cotton is produced by Cotton Fields.",
+                172 => "Processed Vegetable Oil is produced in a Vegetable Oil Mill and require Crops and Vegetables.",
+                173 => "Liquid Concentrates is produced in a Pressing Plant and require Fruits and Vegetables.",
+                174 => "Fish Meal is produced in a Fish Meal Factory from raw fish. Used as input for Fish Hatcheries.",
+                175 => "Fish Oil is produced in a Fish Meal Factory as a byproduct of fish processing.",
+                176 => "Chemical Products are produced in a Chemical Plant and require Processed Vegetable Oil, Petroleum and Metals.",
+                177 => "Leather is produced in a Tannery and require Raw Hides and Chemical Products.",
+                178 => "FoodProducts are produced in a Food Factory and require Red Meat/Pork, Flour, Milk, Processed Vegetable Oil, Vegetables/Fruits, Paper and Plastics.",
+                179 => "BeverageProducts are produced in a Beverage Factory and require Liquid Concentrates/Milk, Crops, Glass and Plastics.",
+                180 => "BakedGoods are produced in a Bakery and require Flour, Milk and Fruits.",
+                181 => "CannedFish is produced in a Seafood Factory and require Salmon/Tuna/Trout, Processed Vegetable Oil, Algae/Seaweed, Plastics and Metals.",
+                182 => "Furnitures are produced in a Furniture Factory and require Planed Timber, Leather/Cotton, Chemical Products and Paper.",
+                183 => "ElectronicProducts are produced in a Electronics Factory and require Metals, Glass and Plastics.",
+                184 => "IndustrialSteel is produced in a Industrial Steel Plant and require Metals.",
+                185 => "Tupperware is produced in a Household Plastic Factory and require Chemical Products, Processed Vegetable Oil and Plastics.",
+                186 => "Toys are produced in a Toy Factory and require Planed Timber, Cotton/Wool, Chemical Products and Plastics.",
+                187 => "PrintedProducts are produced in a Printing Press and require Paper, Chemical Products, Processed Vegetable Oil and Plastics.",
+                188 => "TissuePaper is produced in a Soft Paper Factory and require Cotton, Paper, Chemical Products and Plastics.",
+                189 => "Cloths are produced in a Clothing Factory and require Cotton/Wool, Leather and Plastics/Paper.",
+                190 => "PetroleumProducts are produced in a Petroleum Refinery and require Metals, Patroleum and Plastics.",
+                191 => "Cars are produced in a Car Factory and require Metals, Leather, Plastics, Chemical Products and Glass.",
+                192 => "Footwear is produced in a Sneaker Factory and require Planed Timber, Cotton/Leather, Plastics and Chemical Products.",
+                193 => "HouseParts are produced in a Modular House Factory and require Chemical Products, Metals/Planed Timber, Paper/Plastics and Glass.",
+                194 => "Ship is produced in a Shipyard and require Planed Timber/Metals, Plastics/Glass, Chemical Products and Leather / Cotton.",
+                _ => ""
+            };
+
+            return s;
+        }
+
+        public static int GetResourcePrice(Reason material, ItemClass.Service sourceService = ItemClass.Service.None)
+        {
+            if ((int)material < (int)Reason.MealsDeliveryLow)
+            {
+                return IndustryBuildingAI.GetResourcePrice((TransferReason)material, sourceService);
+            }
+
+            int value = material switch
+            {
+                // ── Raw agricultural (= Grain tier 200) ──────────────────
+                Reason.Fruits => 200,
+                Reason.Vegetables => 200,
+                Reason.Cotton => 200,
+
+                // ── Live animals (= Ore tier 300) ────────────────────────
+                Reason.Cows => 300,
+                Reason.HighlandCows => 300,
+                Reason.Sheep => 300,
+                Reason.Pigs => 300,
+
+                // ── Raw animal products (= Oil tier 400) ─────────────────
+                Reason.Milk => 400,
+                Reason.RawHides => 400,
+                Reason.Wool => 400,
+
+                // ── Fish variants (= Fish tier 600) ──────────────────────
+                Reason.Anchovy => 600,
+                Reason.Salmon => 600,
+                Reason.Shellfish => 600,
+                Reason.Tuna => 600,
+                Reason.Algae => 600,
+                Reason.Seaweed => 600,
+                Reason.Mussels => 600,
+                Reason.Trout => 600,
+
+                // ── Tier 1 processed (= AnimalProducts/Paper tier 1500) ──
+                Reason.Pork => 1500,
+                Reason.ProcessedVegetableOil => 1500,
+                Reason.FoodProducts => 1500,
+                Reason.BeverageProducts => 1500,
+                Reason.BakedGoods => 1500,
+                Reason.TissuePaper => 1500,
+                Reason.PrintedProducts => 1500,
+                Reason.Tupperware => 1500,
+
+                // ── Tier 2 processed (= Glass/Metals tier 2250) ──────────
+                Reason.IndustrialSteel => 2250,
+                Reason.HouseParts => 2250,
+                Reason.CannedFish => 2000,
+                Reason.Leather => 2000,
+                Reason.LiquidConcentrates => 2000,
+                Reason.FishMeal => 2000,
+                Reason.FishOil => 2000,
+                Reason.Cloths => 2500,
+                Reason.Footwear => 2500,
+
+                // ── Tier 3 processed (= Petroleum/Plastics tier 3000) ────
+                Reason.ChemicalProducts => 3000,
+                Reason.PetroleumProducts => 3000,
+                Reason.Furnitures => 3000,
+                Reason.Toys => 3000,
+
+                // ── High value (= LuxuryProducts tier 10000) ─────────────
+                Reason.ElectronicProducts => 5000,
+                Reason.Cars => 8000,
+                Reason.Ship => 10000,
+
+                _ => 0
+            };
+
+            return UniqueFacultyAI.IncreaseByBonus(UniqueFacultyAI.FacultyBonus.Science, value);
         }
     }
 }
