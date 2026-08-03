@@ -4,7 +4,7 @@ namespace TransferManagerCore
 {
     public class CustomTransferReason
     {
-        public const int iLAST_REASON = 127;
+        public const int iLAST_REASON = 193;
 
         public enum Reason
         {
