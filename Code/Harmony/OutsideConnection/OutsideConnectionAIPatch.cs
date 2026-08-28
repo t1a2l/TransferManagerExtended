@@ -40,7 +40,7 @@ namespace TransferManagerCore
                 dummyTrafficFactor = settings.m_dummyTrafficFactor;
             }
 
-            if (!TransferManagerExtendedMod.IsIndustriesMeetsSunsetHarborRunning)
+            if (!TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
             {
                 return true;
             }

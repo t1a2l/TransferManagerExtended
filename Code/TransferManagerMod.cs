@@ -27,6 +27,8 @@ namespace TransferManagerCore
         private GameObject? m_keyboardShortcutGameObject = null;
         private UITextureAtlas? m_atlas = null;
 
+        public static bool IsIndustriesMeetsSunsetHarborRunning;
+
         // ----------------------------------------------------------------------------------------
         public static TransferManagerMod Instance
         {
@@ -172,6 +174,8 @@ namespace TransferManagerCore
 
             // Update passenger capacities for spawn patch
             TransportStationAIPatches.UpdatePassengerCapacities();
+
+            IsIndustriesMeetsSunsetHarborRunning = DependencyUtils.IsIndustriesMeetsSunsetHarborRunning();
 
 #if !TRANSFER_MANAGER_EXTENDED
             // We run this if Transfer Manager Extended data detected.

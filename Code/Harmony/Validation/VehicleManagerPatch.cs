@@ -15,7 +15,7 @@ namespace TransferManagerCore
         [HarmonyPostfix]
         public static void CreateVehicle(VehicleManager __instance, ref ushort vehicle, ref Randomizer r, VehicleInfo info, Vector3 position, TransferManager.TransferReason type, bool transferToSource, bool transferToTarget, ref bool __result)
         {
-            if(!TransferManagerExtendedMod.IsIndustriesMeetsSunsetHarborRunning)
+            if(!TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
             {
                 return;
             }

@@ -12,7 +12,7 @@ namespace TransferManagerExtended.Harmony.TransferManager
         [HarmonyPrefix]
         public static bool Get(Locale __instance, string id, string key, ref string __result)
         {
-            if (SingletonLite<LocaleManager>.exists && !string.IsNullOrEmpty(id) && TransferManagerExtendedMod.IsIndustriesMeetsSunsetHarborRunning)
+            if (SingletonLite<LocaleManager>.exists && !string.IsNullOrEmpty(id) && TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
             {
                 if (id == "WAREHOUSEPANEL_RESOURCE")
                 {
