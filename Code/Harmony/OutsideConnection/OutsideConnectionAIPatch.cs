@@ -58,6 +58,80 @@ namespace TransferManagerCore
             s_bInAddConnectionOffers = false;
         }
 
+        [HarmonyPatch(typeof(OutsideConnectionAI), "RemoveConnectionOffers")]
+        [HarmonyPostfix]
+        public static void RemoveExtendedConnectionOffers(ushort buildingID, ref Building data, TransferManager.TransferReason dummyTrafficReason)
+        {
+            if (!TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+            {
+                return;
+            }
+
+            TransferManager instance = Singleton<TransferManager>.instance;
+            if ((data.m_flags & Building.Flags.Outgoing) != 0)
+            {
+                TransferManager.TransferOffer offer = new()
+                {
+                    Building = buildingID
+                };
+
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.CannedFish, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Furnitures, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ElectronicProducts, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.IndustrialSteel, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Tupperware, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Toys, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.PrintedProducts, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.TissuePaper, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cloths, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.PetroleumProducts, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cars, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Footwear, offer);
+                instance.RemoveOutgoingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.HouseParts, offer);
+            }
+            if ((data.m_flags & Building.Flags.Incoming) != 0)
+            {
+                TransferManager.TransferOffer offer2 = new()
+                {
+                    Building = buildingID
+                };
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Anchovy, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Salmon, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Shellfish, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Tuna, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Algae, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Seaweed, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Trout, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Milk, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pork, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Fruits, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Vegetables, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cows, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.HighlandCows, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Sheep, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pigs, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.CannedFish, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Furnitures, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ElectronicProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.IndustrialSteel, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Tupperware, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Toys, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.PrintedProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.TissuePaper, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cloths, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.PetroleumProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cars, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Footwear, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.HouseParts, offer2);
+            }
+        }
+
         private static bool AddConnectionOffers(OutsideConnectionAI outsideConnectionInstance, ushort buildingID, ref Building data, int productionRate, int cargoCapacity, int residentCapacity, int touristFactor0, int touristFactor1, int touristFactor2, TransferManager.TransferReason dummyTrafficReason, int dummyTrafficFactor)
         {
             SimulationManager instance = Singleton<SimulationManager>.instance;
@@ -101,9 +175,9 @@ namespace TransferManagerCore
             int num3 = (residentCapacity + instance.m_randomizer.Int32(16u)) / 16;
             if ((data.m_flags & Building.Flags.Outgoing) != Building.Flags.None)
             {
-                int num4 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.LeavingHuman);
-                int num5 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.LeavingCargo);
-                int num6 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.LeavingDummy);
+                int num4 = TickPathfindStatus(buildingID, ref data, PathFindType.LeavingHuman);
+                int num5 = TickPathfindStatus(buildingID, ref data, PathFindType.LeavingCargo);
+                int num6 = TickPathfindStatus(buildingID, ref data, PathFindType.LeavingDummy);
                 TransferManager.TransferOffer offer = new()
                 {
                     Building = buildingID,
@@ -572,9 +646,9 @@ namespace TransferManagerCore
             {
                 return false;
             }
-            int num16 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.EnteringHuman);
-            int num17 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.EnteringCargo);
-            int num18 = TickPathfindStatus(buildingID, ref data, BuildingAI.PathFindType.EnteringDummy);
+            int num16 = TickPathfindStatus(buildingID, ref data, PathFindType.EnteringHuman);
+            int num17 = TickPathfindStatus(buildingID, ref data, PathFindType.EnteringCargo);
+            int num18 = TickPathfindStatus(buildingID, ref data, PathFindType.EnteringDummy);
             TransferManager.TransferOffer offer2 = new()
             {
                 Building = buildingID,
