@@ -27,7 +27,7 @@ namespace TransferManagerCore
         private GameObject? m_keyboardShortcutGameObject = null;
         private UITextureAtlas? m_atlas = null;
 
-        public static bool IsIndustriesMeetsSunsetHarborRunning;
+        public static bool IsIndustriesMeetsSunsetHarborRunning = false;
 
         // ----------------------------------------------------------------------------------------
         public static TransferManagerMod Instance

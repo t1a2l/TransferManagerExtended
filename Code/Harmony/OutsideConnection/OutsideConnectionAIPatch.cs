@@ -5,6 +5,7 @@ using ICities;
 using SleepyCommon;
 using TransferManagerCore.Settings;
 using UnityEngine;
+using static BuildingAI;
 
 namespace TransferManagerCore
 {
@@ -1029,12 +1030,16 @@ namespace TransferManagerCore
             return false;
         }
 
-        private static int TickPathfindStatus(ushort buildingID, ref Building data, BuildingAI.PathFindType type)
+        private static int TickPathfindStatus(ushort buildingID, ref Building data, PathFindType type)
         {
             return type switch
             {
-                BuildingAI.PathFindType.EnteringCargo => TickPathfindStatus(ref data.m_education3, ref data.m_adults),
-                BuildingAI.PathFindType.LeavingCargo => TickPathfindStatus(ref data.m_teens, ref data.m_serviceProblemTimer),
+                PathFindType.EnteringCargo => TickPathfindStatus(ref data.m_education3, ref data.m_adults),
+                PathFindType.LeavingCargo => TickPathfindStatus(ref data.m_teens, ref data.m_serviceProblemTimer),
+                PathFindType.EnteringHuman => TickPathfindStatus(ref data.m_workerProblemTimer, ref data.m_taxProblemTimer),
+                PathFindType.LeavingHuman => TickPathfindStatus(ref data.m_incomingProblemTimer, ref data.m_seniors),
+                PathFindType.EnteringDummy => TickPathfindStatus(ref data.m_outgoingProblemTimer, ref data.m_education1),
+                PathFindType.LeavingDummy => TickPathfindStatus(ref data.m_youngs, ref data.m_education2),
                 _ => 0,
             };
         }
