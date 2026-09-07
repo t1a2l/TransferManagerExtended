@@ -40,8 +40,10 @@ namespace TransferManagerCore
         [HarmonyPrefix]
         public static void ReleaseVehicle(ushort vehicle)
         {
+#if DEBUG
             Vehicle vehicleData = VehicleManager.instance.m_vehicles.m_buffer[vehicle];
-            Log.Error($"Releasing vehicle: {vehicle} Flags: {vehicleData.m_flags} BlockCounter: {vehicleData.m_blockCounter}");
+         //   Log.Error($"Releasing vehicle: {vehicle} Flags: {vehicleData.m_flags} BlockCounter: {vehicleData.m_blockCounter}");
+#endif
         }
     }
 }

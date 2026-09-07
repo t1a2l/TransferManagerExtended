@@ -137,9 +137,10 @@ namespace TransferManagerCore
 
             // Intercity Stops
             patchList.Add(typeof(TransportStationAIReversePatches));
+
+            patchList.Add(typeof(VehicleManagerPatch));
 #if DEBUG
             patchList.Add(typeof(CargoVehicleCheckPatch)); 
-            patchList.Add(typeof(VehicleManagerPatch)); 
 #endif
 
             return patchList;
