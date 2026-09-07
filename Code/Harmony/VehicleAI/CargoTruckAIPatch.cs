@@ -45,5 +45,61 @@ namespace TransferManagerCore
                 }
             }
         }
+
+        [HarmonyPatch(typeof(CargoTruckAI), "GetLocalizedStatus")]
+        [HarmonyPrefix]
+        public static bool GetLocalizedStatus(ushort vehicleID, ref Vehicle data, ref InstanceID target, ref string __result)
+        {
+            if (!TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+            {
+                return true;
+            }
+
+            if ((data.m_flags & Vehicle.Flags.TransferToTarget) != 0)
+            {
+                ushort targetBuilding = data.m_targetBuilding;
+                if ((data.m_flags & Vehicle.Flags.GoingBack) != 0)
+                {
+                    target = InstanceID.Empty;
+                    return true;
+                }
+                if ((data.m_flags & Vehicle.Flags.WaitingTarget) != 0)
+                {
+                    target = InstanceID.Empty;
+                    return true;
+                }
+                if (targetBuilding != 0)
+                {
+                    Building.Flags flags = Singleton<BuildingManager>.instance.m_buildings.m_buffer[targetBuilding].m_flags;
+                    if (data.m_transferType >= 153 && data.m_transferType <= 193)
+                    {
+                        CustomTransferReason.Reason transferReason = (CustomTransferReason.Reason)data.m_transferType;
+                        if ((data.m_flags & Vehicle.Flags.Exporting) != 0 || (flags & Building.Flags.IncomingOutgoing) != 0)
+                        {
+                            target = InstanceID.Empty;
+                            __result = "Exporting " + transferReason.ToString();
+                            return false;
+                        }
+                        if ((data.m_flags & Vehicle.Flags.Importing) != 0)
+                        {
+                            target = InstanceID.Empty;
+                            target.Building = targetBuilding;
+                            __result = "Importing " + transferReason.ToString() + " to";
+                            return false;
+                        }
+                        target = InstanceID.Empty;
+                        target.Building = targetBuilding;
+                        __result = "Delivering " + transferReason.ToString() + " to";
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }
+
     }
 }
