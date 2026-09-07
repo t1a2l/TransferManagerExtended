@@ -1,6 +1,7 @@
 ﻿using SleepyCommon;
 using TransferManagerCore.TransferRules;
 using UnityEngine;
+using static RenderManager;
 
 namespace TransferManagerCore.CustomManager
 {
@@ -222,6 +223,11 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.ForestProducts:
                 case CustomTransferReason.Reason.Crops:
 
+                // Raw warehouses - ISMH
+                case CustomTransferReason.Reason.Fruits:
+                case CustomTransferReason.Reason.Vegetables:
+                case CustomTransferReason.Reason.Cotton:
+
                 // General warehouses
                 case CustomTransferReason.Reason.Coal:
                 case CustomTransferReason.Reason.Petrol:
@@ -240,6 +246,45 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.Goods:
                 case CustomTransferReason.Reason.LuxuryProducts:
                 case CustomTransferReason.Reason.Fish:
+
+
+                // General warehouses - ISMH
+                case CustomTransferReason.Reason.Anchovy:
+                case CustomTransferReason.Reason.Salmon:
+                case CustomTransferReason.Reason.Shellfish:
+                case CustomTransferReason.Reason.Tuna:
+                case CustomTransferReason.Reason.Algae:
+                case CustomTransferReason.Reason.Seaweed:
+                case CustomTransferReason.Reason.Mussels:
+                case CustomTransferReason.Reason.Trout:
+
+                case CustomTransferReason.Reason.Milk:
+                case CustomTransferReason.Reason.RawHides:
+                case CustomTransferReason.Reason.Pork:
+                case CustomTransferReason.Reason.Wool:
+                case CustomTransferReason.Reason.ProcessedVegetableOil:
+                case CustomTransferReason.Reason.LiquidConcentrates:
+                case CustomTransferReason.Reason.FishMeal:
+                case CustomTransferReason.Reason.FishOil:
+                case CustomTransferReason.Reason.ChemicalProducts:
+                case CustomTransferReason.Reason.Leather:
+
+                case CustomTransferReason.Reason.FoodProducts:
+                case CustomTransferReason.Reason.BeverageProducts:
+                case CustomTransferReason.Reason.BakedGoods:
+                case CustomTransferReason.Reason.CannedFish:
+                case CustomTransferReason.Reason.Furnitures:
+                case CustomTransferReason.Reason.ElectronicProducts:
+                case CustomTransferReason.Reason.IndustrialSteel:
+                case CustomTransferReason.Reason.Tupperware:
+                case CustomTransferReason.Reason.Toys:
+                case CustomTransferReason.Reason.PrintedProducts:
+                case CustomTransferReason.Reason.TissuePaper:
+                case CustomTransferReason.Reason.Cloths:
+                case CustomTransferReason.Reason.PetroleumProducts:
+                case CustomTransferReason.Reason.Cars:
+                case CustomTransferReason.Reason.Footwear:
+                case CustomTransferReason.Reason.HouseParts:
                     return true;
 
                 default:
@@ -273,6 +318,27 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.Metals:
                 case CustomTransferReason.Reason.AnimalProducts:
                 case CustomTransferReason.Reason.Fish:
+
+                // Materials used by ISMH mod
+                case CustomTransferReason.Reason.Anchovy:
+                case CustomTransferReason.Reason.Salmon:
+                case CustomTransferReason.Reason.Shellfish:
+                case CustomTransferReason.Reason.Tuna:
+                case CustomTransferReason.Reason.Algae:
+                case CustomTransferReason.Reason.Seaweed:
+                case CustomTransferReason.Reason.Mussels:
+                case CustomTransferReason.Reason.Trout:
+
+                case CustomTransferReason.Reason.Milk:
+                case CustomTransferReason.Reason.RawHides:
+                case CustomTransferReason.Reason.Pork:
+                case CustomTransferReason.Reason.Wool:
+                case CustomTransferReason.Reason.ProcessedVegetableOil:
+                case CustomTransferReason.Reason.LiquidConcentrates:
+                case CustomTransferReason.Reason.FishMeal:
+                case CustomTransferReason.Reason.FishOil:
+                case CustomTransferReason.Reason.ChemicalProducts:
+                case CustomTransferReason.Reason.Leather:
                     return true;
 
                 default:
@@ -394,6 +460,38 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.Goods:
                 case CustomTransferReason.Reason.LuxuryProducts:
                 case CustomTransferReason.Reason.Fish:
+
+                case CustomTransferReason.Reason.Anchovy:
+                case CustomTransferReason.Reason.Salmon:
+                case CustomTransferReason.Reason.Shellfish:
+                case CustomTransferReason.Reason.Tuna:
+                case CustomTransferReason.Reason.Algae:
+                case CustomTransferReason.Reason.Seaweed:
+                case CustomTransferReason.Reason.Trout:
+                case CustomTransferReason.Reason.Milk:
+                case CustomTransferReason.Reason.Pork:
+                case CustomTransferReason.Reason.Fruits:
+                case CustomTransferReason.Reason.Vegetables:
+                case CustomTransferReason.Reason.Cows:
+                case CustomTransferReason.Reason.HighlandCows:
+                case CustomTransferReason.Reason.Sheep:
+                case CustomTransferReason.Reason.Pigs:
+                case CustomTransferReason.Reason.FoodProducts:
+                case CustomTransferReason.Reason.BeverageProducts:
+                case CustomTransferReason.Reason.BakedGoods:
+                case CustomTransferReason.Reason.CannedFish:
+                case CustomTransferReason.Reason.Furnitures:
+                case CustomTransferReason.Reason.ElectronicProducts:
+                case CustomTransferReason.Reason.IndustrialSteel:
+                case CustomTransferReason.Reason.Tupperware:
+                case CustomTransferReason.Reason.Toys:
+                case CustomTransferReason.Reason.PrintedProducts:
+                case CustomTransferReason.Reason.TissuePaper:
+                case CustomTransferReason.Reason.Cloths:
+                case CustomTransferReason.Reason.PetroleumProducts:
+                case CustomTransferReason.Reason.Cars:
+                case CustomTransferReason.Reason.Footwear:
+                case CustomTransferReason.Reason.HouseParts:
                     return KnownColor.blue;
 
                 case CustomTransferReason.Reason.Mail:
@@ -504,6 +602,47 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.Fish:
                 case CustomTransferReason.Reason.OutgoingMail:
                 case CustomTransferReason.Reason.UnsortedMail:
+
+                case CustomTransferReason.Reason.Anchovy:
+                case CustomTransferReason.Reason.Salmon:
+                case CustomTransferReason.Reason.Shellfish:
+                case CustomTransferReason.Reason.Tuna:
+                case CustomTransferReason.Reason.Algae:
+                case CustomTransferReason.Reason.Seaweed:
+                case CustomTransferReason.Reason.Mussels:
+                case CustomTransferReason.Reason.Trout:
+
+                case CustomTransferReason.Reason.Milk:
+                case CustomTransferReason.Reason.RawHides:
+                case CustomTransferReason.Reason.Pork:
+                case CustomTransferReason.Reason.Fruits:
+                case CustomTransferReason.Reason.Vegetables:
+                case CustomTransferReason.Reason.Wool:
+                case CustomTransferReason.Reason.Cotton:
+
+                case CustomTransferReason.Reason.ProcessedVegetableOil:
+                case CustomTransferReason.Reason.LiquidConcentrates:
+                case CustomTransferReason.Reason.FishMeal:
+                case CustomTransferReason.Reason.FishOil:
+                case CustomTransferReason.Reason.ChemicalProducts:
+                case CustomTransferReason.Reason.Leather:
+
+                case CustomTransferReason.Reason.FoodProducts:
+                case CustomTransferReason.Reason.BeverageProducts:
+                case CustomTransferReason.Reason.BakedGoods:
+                case CustomTransferReason.Reason.CannedFish:
+                case CustomTransferReason.Reason.Furnitures:
+                case CustomTransferReason.Reason.ElectronicProducts:
+                case CustomTransferReason.Reason.IndustrialSteel:
+                case CustomTransferReason.Reason.Tupperware:
+                case CustomTransferReason.Reason.Toys:
+                case CustomTransferReason.Reason.PrintedProducts:
+                case CustomTransferReason.Reason.TissuePaper:
+                case CustomTransferReason.Reason.Cloths:
+                case CustomTransferReason.Reason.PetroleumProducts:
+                case CustomTransferReason.Reason.Cars:
+                case CustomTransferReason.Reason.Footwear:
+                case CustomTransferReason.Reason.HouseParts:
                     return true;
 
                 default:
@@ -526,6 +665,24 @@ namespace TransferManagerCore.CustomManager
                 case CustomTransferReason.Reason.Lumber:
                 case CustomTransferReason.Reason.IncomingMail:
                 case CustomTransferReason.Reason.SortedMail:
+                
+                case CustomTransferReason.Reason.LuxuryProducts when TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning:
+                case CustomTransferReason.Reason.FoodProducts:
+                case CustomTransferReason.Reason.BeverageProducts:
+                case CustomTransferReason.Reason.BakedGoods:
+                case CustomTransferReason.Reason.CannedFish:
+                case CustomTransferReason.Reason.Furnitures:
+                case CustomTransferReason.Reason.ElectronicProducts:
+                case CustomTransferReason.Reason.IndustrialSteel:
+                case CustomTransferReason.Reason.Tupperware:
+                case CustomTransferReason.Reason.Toys:
+                case CustomTransferReason.Reason.PrintedProducts:
+                case CustomTransferReason.Reason.TissuePaper:
+                case CustomTransferReason.Reason.Cloths:
+                case CustomTransferReason.Reason.PetroleumProducts:
+                case CustomTransferReason.Reason.Cars:
+                case CustomTransferReason.Reason.Footwear:
+                case CustomTransferReason.Reason.HouseParts:
                     return true;
 
                 default:

@@ -1584,6 +1584,19 @@ namespace TransferManagerCore.TransferRules
                 rule.m_id = 0;
                 rule.m_name = Localization.Get("reasonIncomingMaterial"); //"Incoming Material";
                 rule.AddReason(CustomTransferReason.Reason.Fish);
+
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Anchovy);
+                    rule.AddReason(CustomTransferReason.Reason.Salmon);
+                    rule.AddReason(CustomTransferReason.Reason.Shellfish);
+                    rule.AddReason(CustomTransferReason.Reason.Tuna);
+                    rule.AddReason(CustomTransferReason.Reason.Algae);
+                    rule.AddReason(CustomTransferReason.Reason.Seaweed);
+                    rule.AddReason(CustomTransferReason.Reason.Mussels);
+                    rule.AddReason(CustomTransferReason.Reason.Trout);
+                }
+
                 rule.m_incomingDistrict = true;
                 rule.m_incomingBuilding = true;
                 rule.m_incomingDistance = true;
@@ -1594,7 +1607,14 @@ namespace TransferManagerCore.TransferRules
                 ReasonRule rule = new ReasonRule();
                 rule.m_id = 1;
                 rule.m_name = Localization.Get("reasonOutgoingMaterial"); //"Outgoing Material";
-                rule.AddReason(CustomTransferReason.Reason.Goods);
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.CannedFish);
+                }
+                else
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Goods);
+                }
                 rule.m_outgoingDistrict = true;
                 rule.m_outgoingBuilding = true;
                 rule.m_outgoingDistance = true;
@@ -1612,6 +1632,24 @@ namespace TransferManagerCore.TransferRules
                 rule.m_id = 0;
                 rule.m_name = Localization.Get("reasonIncomingMaterial"); //"Incoming Material";
                 rule.AddReason(CustomTransferReason.Reason.Fish);
+
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Anchovy);
+                    rule.AddReason(CustomTransferReason.Reason.Salmon);
+                    rule.AddReason(CustomTransferReason.Reason.Shellfish);
+                    rule.AddReason(CustomTransferReason.Reason.Tuna);
+                    rule.AddReason(CustomTransferReason.Reason.Algae);
+                    rule.AddReason(CustomTransferReason.Reason.Seaweed);
+                    rule.AddReason(CustomTransferReason.Reason.Mussels);
+                    rule.AddReason(CustomTransferReason.Reason.Trout);
+                    rule.AddReason(CustomTransferReason.Reason.Milk);
+                    rule.AddReason(CustomTransferReason.Reason.RawHides);
+                    rule.AddReason(CustomTransferReason.Reason.Pork);
+                    rule.AddReason(CustomTransferReason.Reason.Wool);
+                    rule.AddReason(CustomTransferReason.Reason.Leather);
+                }
+
                 rule.m_incomingDistrict = true;
                 rule.m_incomingBuilding = true;
                 rule.m_incomingDistance = true;
@@ -1640,6 +1678,45 @@ namespace TransferManagerCore.TransferRules
                 rule.AddReason(CustomTransferReason.Reason.Flours);
                 rule.AddReason(CustomTransferReason.Reason.LuxuryProducts);
                 rule.AddReason(CustomTransferReason.Reason.Fish);
+
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Anchovy);
+                    rule.AddReason(CustomTransferReason.Reason.Salmon);
+                    rule.AddReason(CustomTransferReason.Reason.Shellfish);
+                    rule.AddReason(CustomTransferReason.Reason.Tuna);
+                    rule.AddReason(CustomTransferReason.Reason.Algae);
+                    rule.AddReason(CustomTransferReason.Reason.Seaweed);
+                    rule.AddReason(CustomTransferReason.Reason.Mussels);
+                    rule.AddReason(CustomTransferReason.Reason.Trout);
+                    rule.AddReason(CustomTransferReason.Reason.Milk);
+                    rule.AddReason(CustomTransferReason.Reason.RawHides);
+                    rule.AddReason(CustomTransferReason.Reason.Pork);
+                    rule.AddReason(CustomTransferReason.Reason.Wool);
+                    rule.AddReason(CustomTransferReason.Reason.ProcessedVegetableOil);
+                    rule.AddReason(CustomTransferReason.Reason.LiquidConcentrates);
+                    rule.AddReason(CustomTransferReason.Reason.FishMeal);
+                    rule.AddReason(CustomTransferReason.Reason.FishOil);
+                    rule.AddReason(CustomTransferReason.Reason.ChemicalProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Leather);
+                    rule.AddReason(CustomTransferReason.Reason.FoodProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BeverageProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BakedGoods);
+                    rule.AddReason(CustomTransferReason.Reason.CannedFish);
+                    rule.AddReason(CustomTransferReason.Reason.Furnitures);
+                    rule.AddReason(CustomTransferReason.Reason.ElectronicProducts);
+                    rule.AddReason(CustomTransferReason.Reason.IndustrialSteel);
+                    rule.AddReason(CustomTransferReason.Reason.Tupperware);
+                    rule.AddReason(CustomTransferReason.Reason.Toys);
+                    rule.AddReason(CustomTransferReason.Reason.PrintedProducts);
+                    rule.AddReason(CustomTransferReason.Reason.TissuePaper);
+                    rule.AddReason(CustomTransferReason.Reason.Cloths);
+                    rule.AddReason(CustomTransferReason.Reason.PetroleumProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Cars);
+                    rule.AddReason(CustomTransferReason.Reason.Footwear);
+                    rule.AddReason(CustomTransferReason.Reason.HouseParts);
+                }
+
                 rule.m_incomingDistrict = true;
                 rule.m_outgoingDistrict = true;
                 rule.m_incomingBuilding = true;
@@ -1706,6 +1783,48 @@ namespace TransferManagerCore.TransferRules
                 rule.AddReason(CustomTransferReason.Reason.Flours);
                 rule.AddReason(CustomTransferReason.Reason.LuxuryProducts);
                 rule.AddReason(CustomTransferReason.Reason.Fish);
+
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Anchovy);
+                    rule.AddReason(CustomTransferReason.Reason.Salmon);
+                    rule.AddReason(CustomTransferReason.Reason.Shellfish);
+                    rule.AddReason(CustomTransferReason.Reason.Tuna);
+                    rule.AddReason(CustomTransferReason.Reason.Algae);
+                    rule.AddReason(CustomTransferReason.Reason.Seaweed);
+                    rule.AddReason(CustomTransferReason.Reason.Mussels);
+                    rule.AddReason(CustomTransferReason.Reason.Trout);
+                    rule.AddReason(CustomTransferReason.Reason.Milk);
+                    rule.AddReason(CustomTransferReason.Reason.RawHides);
+                    rule.AddReason(CustomTransferReason.Reason.Pork);
+                    rule.AddReason(CustomTransferReason.Reason.Fruits);
+                    rule.AddReason(CustomTransferReason.Reason.Vegetables);
+                    rule.AddReason(CustomTransferReason.Reason.Wool);
+                    rule.AddReason(CustomTransferReason.Reason.Cotton);
+                    rule.AddReason(CustomTransferReason.Reason.ProcessedVegetableOil);
+                    rule.AddReason(CustomTransferReason.Reason.LiquidConcentrates);
+                    rule.AddReason(CustomTransferReason.Reason.FishMeal);
+                    rule.AddReason(CustomTransferReason.Reason.FishOil);
+                    rule.AddReason(CustomTransferReason.Reason.ChemicalProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Leather);
+                    rule.AddReason(CustomTransferReason.Reason.FoodProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BeverageProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BakedGoods);
+                    rule.AddReason(CustomTransferReason.Reason.CannedFish);
+                    rule.AddReason(CustomTransferReason.Reason.Furnitures);
+                    rule.AddReason(CustomTransferReason.Reason.ElectronicProducts);
+                    rule.AddReason(CustomTransferReason.Reason.IndustrialSteel);
+                    rule.AddReason(CustomTransferReason.Reason.Tupperware);
+                    rule.AddReason(CustomTransferReason.Reason.Toys);
+                    rule.AddReason(CustomTransferReason.Reason.PrintedProducts);
+                    rule.AddReason(CustomTransferReason.Reason.TissuePaper);
+                    rule.AddReason(CustomTransferReason.Reason.Cloths);
+                    rule.AddReason(CustomTransferReason.Reason.PetroleumProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Cars);
+                    rule.AddReason(CustomTransferReason.Reason.Footwear);
+                    rule.AddReason(CustomTransferReason.Reason.HouseParts);
+                }
+
                 rule.m_import = true;
                 rule.m_export = true;
                 list.Add(rule);
@@ -1752,6 +1871,49 @@ namespace TransferManagerCore.TransferRules
                 rule.AddReason(CustomTransferReason.Reason.Flours);
                 rule.AddReason(CustomTransferReason.Reason.LuxuryProducts);
                 rule.AddReason(CustomTransferReason.Reason.Fish);
+
+                if (TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning)
+                {
+                    rule.AddReason(CustomTransferReason.Reason.Anchovy);
+                    rule.AddReason(CustomTransferReason.Reason.Salmon);
+                    rule.AddReason(CustomTransferReason.Reason.Shellfish);
+                    rule.AddReason(CustomTransferReason.Reason.Tuna);
+                    rule.AddReason(CustomTransferReason.Reason.Algae);
+                    rule.AddReason(CustomTransferReason.Reason.Seaweed);
+                    rule.AddReason(CustomTransferReason.Reason.Mussels);
+                    rule.AddReason(CustomTransferReason.Reason.Trout);
+                    rule.AddReason(CustomTransferReason.Reason.Milk);
+                    rule.AddReason(CustomTransferReason.Reason.RawHides);
+                    rule.AddReason(CustomTransferReason.Reason.Pork);
+                    rule.AddReason(CustomTransferReason.Reason.Fruits);
+                    rule.AddReason(CustomTransferReason.Reason.Vegetables);
+                    rule.AddReason(CustomTransferReason.Reason.Wool);
+                    rule.AddReason(CustomTransferReason.Reason.Cotton);
+                    rule.AddReason(CustomTransferReason.Reason.ProcessedVegetableOil);
+                    rule.AddReason(CustomTransferReason.Reason.LiquidConcentrates);
+                    rule.AddReason(CustomTransferReason.Reason.FishMeal);
+                    rule.AddReason(CustomTransferReason.Reason.FishOil);
+                    rule.AddReason(CustomTransferReason.Reason.ChemicalProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Leather);
+                    rule.AddReason(CustomTransferReason.Reason.FoodProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BeverageProducts);
+                    rule.AddReason(CustomTransferReason.Reason.BakedGoods);
+                    rule.AddReason(CustomTransferReason.Reason.CannedFish);
+                    rule.AddReason(CustomTransferReason.Reason.Furnitures);
+                    rule.AddReason(CustomTransferReason.Reason.ElectronicProducts);
+                    rule.AddReason(CustomTransferReason.Reason.IndustrialSteel);
+                    rule.AddReason(CustomTransferReason.Reason.Tupperware);
+                    rule.AddReason(CustomTransferReason.Reason.Toys);
+                    rule.AddReason(CustomTransferReason.Reason.PrintedProducts);
+                    rule.AddReason(CustomTransferReason.Reason.TissuePaper);
+                    rule.AddReason(CustomTransferReason.Reason.Cloths);
+                    rule.AddReason(CustomTransferReason.Reason.PetroleumProducts);
+                    rule.AddReason(CustomTransferReason.Reason.Cars);
+                    rule.AddReason(CustomTransferReason.Reason.Footwear);
+                    rule.AddReason(CustomTransferReason.Reason.HouseParts);
+                }
+
+
                 rule.m_outgoingDistrict = true;
                 rule.m_outgoingBuilding = true;
                 rule.m_outgoingDistance = true;

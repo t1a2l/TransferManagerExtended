@@ -104,15 +104,25 @@ namespace TransferManagerCore
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Tuna, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Algae, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Seaweed, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Mussels, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Trout, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Milk, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.RawHides, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pork, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Fruits, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Vegetables, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Wool, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cotton, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cows, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.HighlandCows, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Sheep, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pigs, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ProcessedVegetableOil, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.LiquidConcentrates, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishMeal, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishOil, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ChemicalProducts, offer2);
+                instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Leather, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts, offer2);
                 instance.RemoveIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods, offer2);
@@ -773,11 +783,19 @@ namespace TransferManagerCore
                     }
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Mussels, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
                         instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Trout, offer2);
                     }
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
                         instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Milk, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.RawHides, offer2);
                     }
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
@@ -790,6 +808,14 @@ namespace TransferManagerCore
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
                         instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Vegetables, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Wool, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cotton, offer2);
                     }
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
@@ -806,6 +832,30 @@ namespace TransferManagerCore
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
                         instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pigs, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ProcessedVegetableOil, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.LiquidConcentrates, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishMeal, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishOil, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ChemicalProducts, offer2);
+                    }
+                    if (instance.m_randomizer.Int32(16u) == 0)
+                    {
+                        instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Leather, offer2);
                     }
                     if (instance.m_randomizer.Int32(16u) == 0)
                     {
@@ -903,15 +953,26 @@ namespace TransferManagerCore
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Tuna, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Algae, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Seaweed, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Mussels, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Trout, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Milk, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.RawHides, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pork, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Fruits, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Vegetables, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Wool, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cotton, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Cows, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.HighlandCows, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Sheep, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pigs, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ProcessedVegetableOil, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.LiquidConcentrates, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishMeal, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FishOil, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Pork, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.ChemicalProducts, offer2);
+                    instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.Leather, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts, offer2);
                     instance2.AddIncomingOffer((TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods, offer2);
