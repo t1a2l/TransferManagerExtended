@@ -142,6 +142,200 @@ namespace TransferManagerCore
             }
         }
 
+        [HarmonyPatch(typeof(OutsideConnectionAI), "StartConnectionTransferImpl")]
+        [HarmonyPrefix]
+        public static bool StartConnectionTransferImpl(ushort buildingID, ref Building data, TransferManager.TransferReason material, TransferManager.TransferOffer offer, int touristFactor0, int touristFactor1, int touristFactor2, ref bool __result)
+        {
+            if (!TransferManagerMod.IsIndustriesMeetsSunsetHarborRunning || material != TransferManager.TransferReason.DummyCar)
+            {
+                return true;
+            }
+
+            Building[] buffer = Singleton<BuildingManager>.instance.m_buildings.m_buffer;
+            bool flag2 = false;
+            bool flag3 = false;
+
+            ushort building = offer.Building;
+            if (building != 0)
+            {
+                Vector3 position = buffer[building].m_position;
+                if (Vector3.SqrMagnitude(position - data.m_position) > 40000f)
+                {
+                    flag2 = true;
+                    switch (Singleton<SimulationManager>.instance.m_randomizer.Int32(25u))
+                    {
+                        case 0:
+                            material = TransferManager.TransferReason.Ore;
+                            break;
+                        case 1:
+                            material = TransferManager.TransferReason.Coal;
+                            break;
+                        case 2:
+                            material = TransferManager.TransferReason.Oil;
+                            break;
+                        case 3:
+                            material = TransferManager.TransferReason.Petrol;
+                            break;
+                        case 4:
+                            material = TransferManager.TransferReason.Grain;
+                            break;
+                        case 5:
+                            material = TransferManager.TransferReason.Food;
+                            break;
+                        case 6:
+                            material = TransferManager.TransferReason.Logs;
+                            break;
+                        case 7:
+                            material = TransferManager.TransferReason.Lumber;
+                            break;
+                        case 8:
+                            material = TransferManager.TransferReason.Goods;
+                            break;
+                        case 9: 
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts;
+                            break;
+                        case 10:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts;
+                            break;
+                        case 11:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods;
+                            break;
+                        case 12:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.CannedFish;
+                            break;
+                        case 13:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Furnitures;
+                            break;
+                        case 14:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.ElectronicProducts;
+                            break;
+                        case 15:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.IndustrialSteel;
+                            break;
+                        case 16:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Tupperware;
+                            break;
+                        case 17:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Toys;
+                            break;
+                        case 18:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.PrintedProducts;
+                            break;
+                        case 19:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.TissuePaper;
+                            break;
+                        case 20:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Cloths;
+                            break;
+                        case 21:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.PetroleumProducts;
+                            break;
+                        case 22:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Cars;
+                            break;
+                        case 23:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.Footwear;
+                            break;
+                        case 24:
+                            material = (TransferManager.TransferReason)CustomTransferReason.Reason.HouseParts;
+                            break;
+                    }
+                }
+            }
+
+            VehicleInfo vehicleInfo;
+            switch (material)
+            {
+                case TransferManager.TransferReason.Ore:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialOre, ItemClass.Level.Level2);
+                    break;
+                case TransferManager.TransferReason.Coal:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialOre, ItemClass.Level.Level1);
+                    break;
+                case TransferManager.TransferReason.Oil:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialOil, ItemClass.Level.Level2);
+                    break;
+                case TransferManager.TransferReason.Petrol:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialOil, ItemClass.Level.Level1);
+                    break;
+                case TransferManager.TransferReason.Grain:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialFarming, ItemClass.Level.Level2);
+                    break;
+                case TransferManager.TransferReason.Food:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialFarming, ItemClass.Level.Level1);
+                    break;
+                case TransferManager.TransferReason.Logs:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialForestry, ItemClass.Level.Level2);
+                    break;
+                case TransferManager.TransferReason.Lumber:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialForestry, ItemClass.Level.Level1);
+                    break;
+                case TransferManager.TransferReason.Goods:
+                    vehicleInfo = Singleton<VehicleManager>.instance.GetRandomVehicleInfo(ref Singleton<SimulationManager>.instance.m_randomizer, ItemClass.Service.Industrial, ItemClass.SubService.IndustrialGeneric, ItemClass.Level.Level1);
+                    break;
+
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.FoodProducts:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.BeverageProducts:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.BakedGoods:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.CannedFish:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Furnitures:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.ElectronicProducts:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.IndustrialSteel:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Tupperware:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Toys:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.PrintedProducts:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.TissuePaper:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Cloths:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.PetroleumProducts:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Cars:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.Footwear:
+                case (TransferManager.TransferReason)CustomTransferReason.Reason.HouseParts:
+                    vehicleInfo = WarehouseUtils.GetExtendedTransferVehicleService(material, ItemClass.Level.Level1, ref Singleton<SimulationManager>.instance.m_randomizer);
+                    break;
+
+                default:
+                    __result= false;
+                    return false;
+            }
+
+            if (vehicleInfo != null)
+            {
+                Array16<Vehicle> vehicles = Singleton<VehicleManager>.instance.m_vehicles;
+                if (Singleton<VehicleManager>.instance.CreateVehicle(out var vehicle, ref Singleton<SimulationManager>.instance.m_randomizer, vehicleInfo, data.m_position, material, flag3, !flag3))
+                {
+                    if (flag2)
+                    {
+                        vehicles.m_buffer[vehicle].m_flags |= Vehicle.Flags.DummyTraffic;
+                        vehicles.m_buffer[vehicle].m_flags &= ~Vehicle.Flags.WaitingCargo;
+                        if (material == TransferManager.TransferReason.DummyPlane && Singleton<SimulationManager>.instance.m_randomizer.Int32(2u) == 0)
+                        {
+                            ushort randomAircraftStand = Singleton<DistrictManager>.instance.GetRandomAircraftStand(vehicle);
+                            if (randomAircraftStand != 0)
+                            {
+                                offer.Building = randomAircraftStand;
+                            }
+                        }
+                    }
+                    vehicleInfo.m_vehicleAI.SetSource(vehicle, ref vehicles.m_buffer[vehicle], buildingID);
+                    vehicleInfo.m_vehicleAI.StartTransfer(vehicle, ref vehicles.m_buffer[vehicle], material, offer);
+                    if (!flag2)
+                    {
+                        ushort building4 = offer.Building;
+                        if (building4 != 0)
+                        {
+                            vehicleInfo.m_vehicleAI.GetSize(vehicle, ref vehicles.m_buffer[vehicle], out var size, out _);
+                            if (!flag3)
+                            {
+                                OutsideConnectionAI.ImportResource(building4, ref buffer[building4], material, size);
+                            }
+                        }
+                    }
+                }
+            }
+            __result = true;
+            return false;
+        }
+
         private static bool AddConnectionOffers(OutsideConnectionAI outsideConnectionInstance, ushort buildingID, ref Building data, int productionRate, int cargoCapacity, int residentCapacity, int touristFactor0, int touristFactor1, int touristFactor2, TransferManager.TransferReason dummyTrafficReason, int dummyTrafficFactor)
         {
             SimulationManager instance = Singleton<SimulationManager>.instance;
